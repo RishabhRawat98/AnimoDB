@@ -6,7 +6,7 @@ I want to create a website where you can go and track you favourite anime and fi
 
 # TODO:
 - [x] Create the endpoints
-- [x] Create a way to make individual profiles
+- [x] Create a way to make individual profiles and upload profile pictures
 - [x] Create a relational database to have users, watchlist, recommended list
 - [x] Create the recommendation engine
 - [x] Createa a page to view the lists
