@@ -28,7 +28,7 @@ def hello():
 
 @app.route("/discover")
 def discover():
-    return "ELLO ELLO"
+    return render_template('discover.html')
 
 
 
