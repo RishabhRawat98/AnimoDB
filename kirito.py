@@ -46,10 +46,15 @@ def register():
         return redirect(url_for('home'))
     return render_template('register.html', page_name='Register', form=form)
 
-@app.route("/login")
+@app.route("/login", methods=["Get", "POST"])
 def login():
     form = LoginForm()
-    return render_template('login.html', page_name='Login', form=form)
+    if form.validate_on_submit():
+        flash(f'Login successful!', 'success')
+        return redirect(url_for('home'))
+    else:
+        flash('Incorrect Username or password', 'danger')
+        return  render_template('login.html', page_name='Login', form=form)
 
 
 
