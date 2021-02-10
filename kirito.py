@@ -1,5 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, flash, redirect
+from forms import RegistrationForm, LoginForm
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] ='IDK'
 
 movie_info = [
     {
@@ -22,13 +25,36 @@ movie_info = [
 
 
 @app.route("/")
-def hello():
+def home():
     return render_template('home.html', movinfo = movie_info)
 
 
 @app.route("/discover")
 def discover():
     return render_template('discover.html')
+
+
+
+
+
+
+@app.route("/register", methods=["Get", "POST"])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', page_name='Register', form=form)
+
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template('login.html', page_name='Login', form=form)
+
+
+
+
+
 
 
 
